@@ -1,0 +1,12 @@
+export { dpopAuth, default } from "./middleware.js";
+export { resolveConfig, DEFAULT_CONFIG } from "./config.js";
+export type { GatewayConfig } from "./config.js";
+export { verifyDpopProof } from "./verifier/dpop.js";
+export type { DpopVerifyOptions } from "./verifier/dpop.js";
+export { verifyDbscProof } from "./verifier/dbsc.js";
+export { verifyClientCert } from "./verifier/mtls.js";
+export { InMemoryReplayCache } from "./replay/cache.js";
+export type { ReplayCache } from "./replay/cache.js";
+export { verifyTpmAttestation } from "./attestation/tpm.js";
+export { verifyAppleSeAttestation } from "./attestation/apple-se.js";
+export { verifyAndroidAttestation } from "./attestation/android.js";

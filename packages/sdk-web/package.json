@@ -1,0 +1,23 @@
+{
+  "name": "@ironclad/sdk-web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Browser SDK for Ironclad: hardware-bound key management, DPoP proof minting, and DBSC",
+  "browser": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@ironclad/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
+  }
+}
