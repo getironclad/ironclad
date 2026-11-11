@@ -24,6 +24,18 @@ import { InvalidProofError } from "@ironclad/shared";
  * TODO: bind the subject to `req` context for downstream handlers.
  * TODO: enforce the legacy bearer fallback path (docs/adr/003-legacy-fallback.md).
  */
+
+/**
+ * RFC 9449 §4.2: `htu` must be the full absolute request URI
+ * (`scheme://host/path`), not just the path. Honours `X-Forwarded-Proto` /
+ * `X-Forwarded-Host` when present (e.g. behind a reverse proxy).
+ */
+export function absoluteHtu(req: Request): string {
+  const proto = req.get("X-Forwarded-Proto") ?? req.protocol;
+  const host = req.get("X-Forwarded-Host") ?? req.get("host") ?? "";
+  return `${proto}://${host}${req.originalUrl}`;
+}
+
 export function dpopAuth(
   overrides: Partial<GatewayConfig> = {},
 ): RequestHandler {
@@ -50,7 +62,7 @@ export function dpopAuth(
 
     // TODO: implement the full verification pipeline described above.
     // For now this is a placeholder that accepts any syntactically present proof.
-    void verifyDpopProof(proof, { htm: req.method, htu: req.originalUrl });
+    void verifyDpopProof(proof, { htm: req.method, htu: absoluteHtu(req) });
 
     // TODO: reject replays by checking `jti` against the replay cache.
     void replayCache;

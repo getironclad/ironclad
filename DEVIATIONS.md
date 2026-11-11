@@ -13,9 +13,9 @@ as specified. No fallback versions were required.
 | ----------- | --------- | ------------------- | ----- |
 | typescript  | ^7.0.2    | 7.0.2               | exact major requested |
 | vitest      | ^5.1.0    | 5.1.0               | exact |
-| vite        | ^6.4      | 6.4.6               | within requested range |
+| vite        | ^6.4.0    | 6.4.6               | within requested range |
 | turbo       | ^2.11.10  | 2.11.10             | exact |
-| prettier    | ^3        | 3.9.10              | within requested range |
+| prettier    | ^3.6.2    | 3.9.10              | within requested range |
 | express     | ^5        | 5.3.0               | within requested range |
 
 ## pnpm 12 build-script approvals
