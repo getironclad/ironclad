@@ -11,11 +11,30 @@ export interface MintDpopOptions {
   iat?: number;
 }
 
-/** A random UUID-ish `jti` for replay uniqueness. */
+/** Encode bytes as unpadded base64url. */
+function base64url(bytes: Uint8Array): string {
+  let binary = "";
+  for (const b of bytes) binary += String.fromCharCode(b);
+  return btoa(binary)
+    .replace(/=+$/, "")
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_");
+}
+
+/**
+ * A random `jti` for replay uniqueness.
+ *
+ * Prefers `crypto.randomUUID`; falls back to 128 bits of CSPRNG output
+ * (`crypto.getRandomValues`, base64url-encoded) so the value is never
+ * predictable — it never relies on a non-CSPRNG source.
+ */
 export function randomJti(): string {
-  return typeof crypto.randomUUID === "function"
-    ? crypto.randomUUID()
-    : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
+  if (typeof crypto.randomUUID === "function") {
+    return crypto.randomUUID();
+  }
+  const bytes = new Uint8Array(16);
+  crypto.getRandomValues(bytes);
+  return base64url(bytes);
 }
 
 /**
