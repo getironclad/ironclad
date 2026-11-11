@@ -72,7 +72,7 @@ Two token tiers with different lifetimes and proof requirements:
   stolen access token is inert almost immediately. We deliberately accept
   bearer semantics for the short window to keep non-sensitive API calls cheap.
 - No proof required on ordinary reads; a DPoP proof is required only on
-  sensitive operations (see spec/adr/002).
+  sensitive operations (see docs/adr/002-sensitive-only-proof.md).
 
 ### `cnf.jkt` claim structure
 
