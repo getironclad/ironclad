@@ -1,0 +1,22 @@
+{
+  "name": "ironclad",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Sender-constrained session tokens: DPoP + DBSC + mTLS middleware and SDKs",
+  "scripts": {
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "test": "turbo run test"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2",
+    "turbo": "^2.11.10",
+    "typescript": "^7.0.2",
+    "vite": "^6.4.0",
+    "vitest": "^5.1.0"
+  },
+  "engines": {
+    "node": ">=26"
+  },
+  "packageManager": "pnpm@12.18.0"
+}
