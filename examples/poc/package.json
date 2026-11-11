@@ -1,0 +1,17 @@
+{
+  "name": "poc",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Sprint 0 proof-of-concept: browser WebCrypto keygen -> DPoP proof -> Node verifier",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@ironclad/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
+  }
+}
